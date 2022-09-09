@@ -156,5 +156,4 @@ struct option element::info::long_opts[] = {
     {"help",           no_argument,   0, 'h' },
     {"dump-elements",  no_argument,   0, 'd' },
     {"no-color",       no_argument,   0, 'c' },
-    {"?",              no_argument,   0,  0  }
 };
