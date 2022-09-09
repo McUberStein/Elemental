@@ -6,4 +6,5 @@ My first C++ project. I love both programming and chemistry so I decided somethi
 Run `make` in the source directory and `sudo make install` to install
 
 # Usage
-Simply run the binary
+Simply run the binary. 
+All current elements(118) should be supported
