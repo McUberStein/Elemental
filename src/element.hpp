@@ -25,11 +25,9 @@ namespace element{
     class types{
     private:
         typedef unsigned short int elenum_t;
-
     public:
         typedef enum {solid = 1, gas, liquid, unknown} elestate_t;
         typedef enum{H = 1, He, Li, Be, B, C, N, O, F, Ne, Na, Mg, Al, Si, P, S, Cl, Ar, K, Ca, Sc, Ti, V, Cr, Mn, Fe, Co, Ni, Cu, Zn, Ga, Ge, As, Se, Br, Kr, Rb, Sr, Y, Zr, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd, In, Sn, Sb, Te, I, Xe, Cs, Ba, La, Ce, Pr, Nd, Pm, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Hf, Ta, W, Re, Os, Ir, Pt, Au, Hg, Tl, Pb, Bi, Po, At, Rn, Fr, Ra, Ac, Th, Pa, U, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr, Rf, Db, Sg, Bh, Hs, Mt, Ds, Rg, Cn, Nh, Fl, Mc, Lv, Ts, Og, ERR = 4000} elenium_t;
-        typedef enum{i = 1, ii, iii, iv, v, vi, vii, viii} roman_t;
         typedef struct{
             std::string name;
             std::string sign;
@@ -43,6 +41,7 @@ namespace element{
 
     class flags{
     public:
+        static bool CASE;
         static bool COLOR;
         static bool NAME_ONLY;
         static bool NAME;
@@ -68,7 +67,6 @@ namespace element{
         static std::string entos(int num, std::string strarr[]);
         static void handle_args(int argc, char *argv[]);
     };
-
 }
 
 
