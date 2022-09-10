@@ -9,15 +9,9 @@ using namespace element;
 
 
 void utils::handle_args(int argc, char *argv[]){
-  int c, option_index = 0;
-  while(1){
-    c = getopt_long(argc, argv, "Armnsphdc", element::info::long_opts, &option_index);
-
-    if( c == -1 ){
-      break;
-}
+  int c;
+  while((c = getopt_long(argc, argv, "Armnsphdci", info::long_opts, NULL)) != -1){
     switch(c){
-
     case 'A':
       flags::NAME = true;
       flags::SIGN = true;
@@ -28,12 +22,16 @@ void utils::handle_args(int argc, char *argv[]){
       flags::RADS = true;
       break;
 
+    case 'r':
+      flags::RADS = true;
+      break;
+
     case 'm':
       flags::MASS = true;
       break;
 
-    case 'r':
-      flags::RADS = true;
+    case 'n':
+      flags::NAME_ONLY = true;
       break;
 
     case 's':
@@ -42,19 +40,6 @@ void utils::handle_args(int argc, char *argv[]){
 
     case 'p':
       flags::POS = true;
-      break;
-
-    case 'd':
-      cout << "Number of elements: " << info::n_of_elements << endl;
-      exit(0);
-      break;
-
-    case 'c':
-      flags::COLOR = false;
-      break;
-
-    case 'n':
-      flags::NAME_ONLY = true;
       break;
 
     case 'h':
@@ -68,9 +53,23 @@ void utils::handle_args(int argc, char *argv[]){
       cout << START << "-p, --position" << "         print the element's group and period" << endl;
       cout << START << "-d, --dump-elements" << "    dump the number of elements and exit" << endl;
       cout << START << "-c, --no-color" << "         disable colorful output" << endl;
+      cout << START << "-i, --insensitive" << "      disable case sensitivity" << endl;
       cout << START << "-h, --help" << "             print this help screen" << endl;
       cout << endl << "Elemental 0.1" << endl << "by McUberStein3301" << endl << "Licensed under GPLv3" << endl;
       exit(0);
+      break;
+
+    case 'd':
+      cout << "Number of elements: " << info::n_of_elements << endl;
+      exit(0);
+      break;
+
+    case 'c':
+      flags::COLOR = false;
+      break;
+
+    case 'i':
+      flags::CASE = false;
       break;
 
     case '?':
