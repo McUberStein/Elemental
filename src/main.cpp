@@ -1,6 +1,8 @@
 #include "element.hpp"
 #include <iomanip>
 
+#pragma clang diagnostic ignore "-Wswitch"
+
 #define GAS E.stp_state = types::gas
 #define SOL E.stp_state = types::solid
 #define LIQ E.stp_state = types::liquid
