@@ -1032,6 +1032,7 @@ int main(int argc, char *argv[]){
       } // Element is found
       else {
             cout << DARKRED << "Element not found" << endl;
+            RESCOLOR;
       }
       return 0;
 }
