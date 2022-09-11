@@ -1,5 +1,5 @@
 #include "element.hpp"
-#include <bits/stdc++.h>
+#include <iomanip>
 
 #define GAS E.stp_state = types::gas
 #define SOL E.stp_state = types::solid
