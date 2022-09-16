@@ -7,9 +7,12 @@ using namespace std;
 using namespace element;
 
 void ERR(void);
+int sstoi(string str);
+
+static string uinp;
 
 int main(int argc, char *argv[]){
-      string uinp;
+      //static string uinp;
       utils::handle_args(argc, argv);
 
       cout << (flags::COLOR ? DARKGREEN : NOCOLOR) << (flags::BYNUM_M ? "Enter a number: " : "Enter an element") << NOCOLOR;
@@ -22,7 +25,7 @@ int main(int argc, char *argv[]){
       if(flags::BYNUM_M && uinp.length() > 9)
             ERR();
 
-      auto sign = (flags::BYNUM_M ? stoi(uinp) : utils::stoen(uinp, (flags::FULLNAME_M ? info::list_long : info::list)));
+      auto sign = (flags::BYNUM_M ? sstoi(uinp) : utils::stoen(uinp, (flags::FULLNAME_M ? info::list_long : info::list)));
       auto E = utils::get_element((int)sign);
 
       if(E != NULL){
@@ -51,7 +54,26 @@ int main(int argc, char *argv[]){
 }
 
 void ERR(void){
-      cout << DARKRED << (flags::BYNUM_M ? "Number out of range" : "Element not found") << endl;
+      bool empty;
+      utils::arrempty(uinp, &empty);
+      cout << DARKRED;
+      if(flags::BYNUM_M && utils::isnum(uinp) && !empty)
+            cout << "Number out of range" << endl;
+      else if(flags::BYNUM_M && !utils::isnum(uinp) && !empty)
+            cout << "Not a number" << endl;
+      else if(empty)
+            cout << "No input" << endl;
+      else
+            cout << "Element not found" << endl;
       RESCOLOR;
+      cout << empty << endl;
       exit(1);
+}
+
+int sstoi(string str){
+      if(utils::isnum(str) && (str.length() <= 9) && !str.empty())
+            return stoi(str);
+      else
+            ERR();
+      return -1;
 }
