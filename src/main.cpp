@@ -12,11 +12,11 @@ int main(int argc, char *argv[]){
       string uinp;
       utils::handle_args(argc, argv);
 
-      cout << (flags::COLOR ? DARKGREEN : NOCOLOR) << (flags::BYNUM_M ? "Enter a number: " : "Enter an element");
+      cout << (flags::COLOR ? DARKGREEN : NOCOLOR) << (flags::BYNUM_M ? "Enter a number: " : "Enter an element") << NOCOLOR;
       if(flags::FULLNAME_M && !flags::BYNUM_M)
-            cout << "(full name): " << NOCOLOR;
+            cout << DARKGREEN << "(full name): " << NOCOLOR;
       else if(!flags::FULLNAME_M && !flags::BYNUM_M)
-            cout << ": " << NOCOLOR;
+            cout << DARKGREEN << ": " << NOCOLOR;
       getline(cin, uinp);
 
       if(flags::BYNUM_M && uinp.length() > 9)
