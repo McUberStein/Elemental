@@ -10,7 +10,7 @@ using namespace element;
 
 void utils::handle_args(int argc, char *argv[]){
   int c;
-  while((c = getopt_long(argc, argv, "Armnsphdci", info::long_opts, NULL)) != -1){
+  while((c = getopt_long(argc, argv, "Armnsphdcifb", info::long_opts, NULL)) != -1){
     switch(c){
     case 'A':
       flags::NAME = true;
@@ -51,21 +51,34 @@ void utils::handle_args(int argc, char *argv[]){
       cout << START << "-n, --name-only" << "        only print the element name" << endl;
       cout << START << "-s, --stp-state" << "        print the element state at STP" << endl;
       cout << START << "-p, --position" << "         print the element's group and period" << endl;
-      cout << START << "-d, --dump-elements" << "    dump the number of elements and exit" << endl;
+      cout << START << "-d, --dump-elements" << "    dump all elements and exit" << endl;
       cout << START << "-c, --no-color" << "         disable colorful output" << endl;
       cout << START << "-i, --insensitive" << "      disable case sensitivity" << endl;
+      cout << START << "-f, --full-name" << "        use full names instead of signs" << endl;
+      cout << START << "                       works with -d" << endl;
+      cout << START << "-b, --by-number" << "        search by atomic number instead of sign" << endl;
       cout << START << "-h, --help" << "             print this help screen" << endl;
-      cout << endl << "Elemental 0.1" << endl << "by McUberStein3301" << endl << "Licensed under GPLv3" << endl;
+      cout << endl << "Elemental " << PROGVER << endl << "by McUberStein3301" << endl << "Licensed under GPLv3" << endl;
       exit(0);
       break;
 
     case 'd':
+      for(int i = 0; i < info::n_of_elements; i++)
+        cout << (flags::FULLNAME_M ? info::list_long[i] : info::list[i]) << endl;
       cout << "Number of elements: " << info::n_of_elements << endl;
       exit(0);
       break;
 
     case 'c':
       flags::COLOR = false;
+      break;
+
+    case 'f':
+      flags::FULLNAME_M = true;
+      break;
+
+    case 'b':
+      flags::BYNUM_M = true;
       break;
 
     case 'i':
