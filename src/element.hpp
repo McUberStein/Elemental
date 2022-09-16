@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <getopt.h>
+#include <cstring>
 
 
 #define PROGVER 0.2
@@ -73,6 +74,35 @@ namespace element{
         static void handle_args(int argc, char *argv[]);
         static types::element_t *get_element(int num);
         static bool isnum(std::string str);
+        class arrempty{
+        public:
+            arrempty(std::string str, bool *out){
+                int n = str.length();
+                int c = 0;
+                char arr[n+1];
+                strcpy(arr, str.c_str());
+                for(int i = 0; i < n+1; i++){
+                    if(arr[i] == ' ')
+                        c++;
+                }
+                if(c == n)
+                    *out = true;
+                else
+                    *out = false;
+            }
+            arrempty(char *arr, bool *out){
+                int n = sizeof(arr);
+                int c = 0;
+                for(int i = 0; i < n; i++){
+                    if(arr[i] == ' ')
+                        c++;
+                }
+                if(c == n)
+                    *out = true;
+                else
+                    *out = false;
+            }
+        };
     };
 }
 
