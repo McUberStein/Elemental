@@ -66,7 +66,6 @@ void ERR(void){
       else
             cout << "Element not found" << endl;
       RESCOLOR;
-      cout << empty << endl;
       exit(1);
 }
 
