@@ -5,6 +5,8 @@
 #include <getopt.h>
 
 
+#define PROGVER 0.2
+
 #define RED "\x1B[0;31m"
 #define DARKRED "\x1B[1;31m"
 #define BLUE "\x1B[0;34m"
@@ -41,6 +43,8 @@ namespace element{
 
     class flags{
     public:
+        static bool FULLNAME_M;
+        static bool BYNUM_M;
         static bool CASE;
         static bool COLOR;
         static bool NAME_ONLY;
@@ -56,6 +60,7 @@ namespace element{
     class info{
     public:
         static std::string list[];
+        static std::string list_long[];
         static std::string states[];
         static int n_of_elements;
         static struct option long_opts[];
@@ -66,6 +71,8 @@ namespace element{
         static types::elenium_t stoen(std::string exp, std::string strarr[]);
         static std::string entos(int num, std::string strarr[]);
         static void handle_args(int argc, char *argv[]);
+        static types::element_t *get_element(int num);
+        static bool isnum(std::string str);
     };
 }
 
